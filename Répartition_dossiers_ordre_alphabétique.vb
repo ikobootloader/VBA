@@ -157,9 +157,9 @@ Sub repartition()
                     Else
                         'MsgBox compterNoms
                         'Intégrer quantité de dossier dans colonne F (2 à 8)
-                        Sheets(nomFeuille).Range("F" & numeroInstruct & "").Value = compterNoms
+                        Sheets("usagers").Range("F" & numeroInstruct & "").Value = compterNoms
                         'Intégrer arrangement alphabétique dans colonne G (2 à 8)
-                        Sheets(nomFeuille).Range("G" & numeroInstruct & "").Value = alphabet(compterDonnees) + alphabet(compterDonnees2) + alphabet(compterDonnees3) + alphabet(compterDonnees4 - 1)
+                        Sheets("usagers").Range("G" & numeroInstruct & "").Value = alphabet(compterDonnees) + alphabet(compterDonnees2) + alphabet(compterDonnees3) + alphabet(compterDonnees4 - 1)
                         'Passer à la cellule suivante pour le prochain tour
                         numeroInstruct = numeroInstruct + 1
                         
@@ -227,6 +227,9 @@ Sub repartition()
         
         'On passe à la feuille suivante
         compteurFeuille = compteurFeuille + 1
+        'Reset
+        compteur = 0
+        numeroCell = 219
                
     Next
     'Si quantité n'est pas exact à la quantité de dossier théorique par instructrice (divDonneesParInstruct)
