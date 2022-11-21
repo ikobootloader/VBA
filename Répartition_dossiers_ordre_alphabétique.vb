@@ -1,3 +1,5 @@
+'Frédérick MURAT - Licence GPLv3
+
 Sub repartition()
     
     '/** REPARTITION DOSSIERS PAR ORDRE ALPAHABETIQUE **/
