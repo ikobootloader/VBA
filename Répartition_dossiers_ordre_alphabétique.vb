@@ -20,13 +20,7 @@ Sub repartition()
     alphabet = Array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
     
     'Compter le nombre de nom
-    Dim compterDonnees As Long
-    'Compter le nombre de nom
-    Dim compterDonnees2 As Long
-    'Compter le nombre de nom
-    Dim compterDonnees3 As Long
-    'Compter le nombre de nom
-    Dim compterDonnees4 As Long
+    Dim compterDonnees, compterDonnees2, compterDonnees3, compterDonnees4 As Long
     
     'Compter jusqu'à 30
     Dim resultatCorresp As Long
@@ -98,6 +92,14 @@ Sub repartition()
     Dim bool As Integer
     bool = 0
     
+    'Compter les noms jusqu'à 30
+    Dim compterNoms As Integer
+    compterNoms = 0
+    Dim colorCell, colorCell2, colorCell3 As Integer
+    colorCell = 30
+    colorCell2 = 30
+    colorCell3 = 50
+    
     For compterDonnees = 0 To 25
     
         For compterDonnees2 = 0 To 25
@@ -115,8 +117,26 @@ Sub repartition()
                 'Intégrer les quantités de noms associés
                 Range("" & lettreA & alphabet(colonne + 1) & numeroCell & "").Select
                 ActiveCell.FormulaLocal = "=NB.SI(A1:A210;""" & alphabet(compterDonnees) + alphabet(compterDonnees2) + alphabet(compterDonnees3) & "*"")"
+                
+                '/*******/
+                'Compter noms , coloriser cellules
+                If compterNoms <= divDonneesParInstruct Then
+                    compterNoms = compterNoms + Range("" & lettreA & alphabet(colonne + 1) & numeroCell & "").Value
+                    Range("" & lettreA & alphabet(colonne) & numeroCell & "").Interior.Color = RGB(colorCell, colorCell2, colorCell3)
+                Else
+                    compterNoms = 0
+                    compterNoms = compterNoms + Range("" & lettreA & alphabet(colonne + 1) & numeroCell & "").Value
+                    colorCell = colorCell + 6
+                    colorCell2 = colorCell2 + 30 * 1.15
+                    colorCell3 = colorCell3 + 50 * 0.7
+                    Range("" & lettreA & alphabet(colonne) & numeroCell & "").Interior.Color = RGB(colorCell, colorCell2, colorCell3)
+                End If
+                '/*******/
+                
+                'On passe à la cellule suivante
                 numeroCell = numeroCell + 1
-
+                
+                'Si on dépasse la colonne Z
                 objet = lettreA & alphabet(colonne)
                 If objet = "Y" Then
                     If numeroCell = "245" Then
