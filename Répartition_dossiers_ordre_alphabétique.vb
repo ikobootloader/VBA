@@ -1,5 +1,3 @@
-'Frédérick MURAT - Licence GPLv3
-
 Sub repartition()
     
     '/** REPARTITION DOSSIERS PAR ORDRE ALPAHABETIQUE **/
@@ -40,7 +38,18 @@ Sub repartition()
     
     '***********************
     
-    '/** ARRANGEMENTS ALAPHABETIQUE A 1 LETTRES **/
+    'REPARTITION PAR NOM
+    
+    For compterDonnees = 1 To nbInstruct
+    
+        Range("E" & compterDonnees + 1 & "").Select
+        ActiveCell.FormulaLocal = Range("A" & (divDonneesParInstruct * compterDonnees) & "").Value
+        
+    Next
+    
+    '***********************
+    
+    '/** INVENTAIRE : ARRANGEMENTS ALAPHABETIQUE A 1 LETTRES **/
     
     'Boucle
     For compterDonnees = 0 To 25
@@ -55,7 +64,7 @@ Sub repartition()
     
     Next
     
-    '/** ARRANGEMENTS ALAPHABETIQUE A 2 LETTRES **/
+    '/** INVENTAIRE : ARRANGEMENTS ALAPHABETIQUE A 2 LETTRES **/
     
     'Reset numeroCell
     numeroCell = 16
@@ -124,24 +133,21 @@ Sub repartition()
     Dim numeroInstruct As Integer
     numeroInstruct = 2
     
-    '/** ARRANGEMENTS ALAPHABETIQUE A 4 LETTRES **/
+    '/** INVENTAIRE : ARRANGEMENTS ALAPHABETIQUE A 4 LETTRES **/
 
-    For compterDonnees = 0 To 1
+    For compterDonnees = 0 To 0
     
         'Créer une nouvelle feuille et lui donner un nom pour chaque lettre
         nomFeuille = alphabet(compteurFeuille)
         Sheets.Add(After:=Worksheets(Worksheets.Count)).Name = nomFeuille
     
-        For compterDonnees2 = 0 To 25
+        For compterDonnees2 = 0 To 0
 
-            For compterDonnees3 = 0 To 25
+            For compterDonnees3 = 0 To 0
             
-                For compterDonnees4 = 0 To 25
+                For compterDonnees4 = 0 To 0
                     
                     'Intégrer les arrangements alphabétiques
-                    'Worksheets
-                    
-                    
                     Sheets(nomFeuille).Range("" & lettreA & alphabet(colonne) & numeroCell & "").Value = alphabet(compterDonnees) + alphabet(compterDonnees2) + alphabet(compterDonnees3) + alphabet(compterDonnees4)
                     
                     'MsgBox "on est dans la boucle!"
