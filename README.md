@@ -1,2 +1,2 @@
-  # Répartition de dossiers par arrangements alphabétiques
+  # Inventaire et Répartition de dossiers par arrangements alphabétiques
 Projet en cours de réalisation
